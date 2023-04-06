@@ -42,17 +42,10 @@ class NoteViewController: UIViewController {
     
     @IBAction func lockButtonPressed(_ sender: UIButton) {
         guard let index = index else { return }
-        switch lockStatus {
-        case .locked:
-            notesArray[index].lockStatus = .unlocked
-        case .unlocked:
-            notesArray[index].lockStatus = .locked
-        default:
-            print("error")
-        }
+        
+        notesArray[index].lockStatus = lockStatusFlipper(lockStatus: lockStatus!)
         
         navigationController?.popViewController(animated: true)
-        
     }
     
 }
