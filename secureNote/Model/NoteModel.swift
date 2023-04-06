@@ -7,12 +7,18 @@
 
 import Foundation
 
-class Note {
-    public private(set) var message: String
-    public  var lockStatus: LockStatus
+struct NoteModel {
+    let message: String
+    var lockStatus: LockStatus
     
     init(message: String, lockStatus: LockStatus) {
         self.message = message
         self.lockStatus = lockStatus
     }
 }
+
+struct NoteList {
+    static var noteList = [Note]()
+}
+
+

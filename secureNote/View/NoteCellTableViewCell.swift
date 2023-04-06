@@ -26,7 +26,7 @@ class NoteCell: UITableViewCell {
     
     //MARK: - Helpers
     
-    func configure(note: Note) {
+    func configure(note: NoteModel) {
         let message = "\(note.message.prefix(40))..."
         let lockStatus = note.lockStatus
         

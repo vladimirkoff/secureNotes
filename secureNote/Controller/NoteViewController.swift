@@ -13,8 +13,12 @@ class NoteViewController: UIViewController {
     @IBOutlet weak var noteTextView: UITextView!
     @IBOutlet weak var lockButton: UIButton!
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var noteList: [Note]?
+
     var message: String?
-    var lockStatus: LockStatus?
+    var lockStatus: String?
     var index: Int?
     
     //MARK: - Lifecycle
@@ -30,7 +34,7 @@ class NoteViewController: UIViewController {
         guard let noteText = message else { return }
         guard let lockStatus = lockStatus else { return }
         
-        let buttonTitle = lockStatus == .locked ? "Unlock this note" : "Lock this note"
+        let buttonTitle = lockStatus == "locked" ? "Unlock this note" : "Lock this note"
         noteTextView.text = noteText
         lockButton.setTitle(buttonTitle, for: .normal)
         
@@ -42,8 +46,11 @@ class NoteViewController: UIViewController {
     
     @IBAction func lockButtonPressed(_ sender: UIButton) {
         guard let index = index else { return }
+        guard let noteList = noteList else { return }
         
-        notesArray[index].lockStatus = lockStatusFlipper(lockStatus: lockStatus!)
+        let lockedStatus = lockStatus == "locked" ? "locked" : "unlocked"
+        
+        noteList[index].setValue(lockedStatus, forKey: "lockStatus")
         
         navigationController?.popViewController(animated: true)
     }
