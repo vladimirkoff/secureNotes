@@ -61,6 +61,7 @@ class NotesViewController: UIViewController {
                 newNote.message = noteText
                 newNote.lockStatus = "unlocked"
                 self.saveItems()
+                self.refresh()
             }
         }
         alertController.addAction(continueAction)
@@ -68,6 +69,13 @@ class NotesViewController: UIViewController {
     }
     
     //MARK: - Helpers
+    
+    func refresh() {
+        loadItems { notes in
+            self.noteList = notes
+            self.tableView.reloadData()
+        }
+    }
     
     func configureTableView() {
         tableView.register(UINib(nibName: "NoteCellTableViewCell", bundle: nil), forCellReuseIdentifier: "NoteCell")
