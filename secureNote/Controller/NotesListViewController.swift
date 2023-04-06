@@ -79,6 +79,8 @@ extension NotesViewController: UITableViewDelegate, UITableViewDataSource {
                     self?.pushNote(indexPath: indexPath)
                 }
             }
+        } else {
+            pushNote(indexPath: indexPath)
         }
     }
     
@@ -92,21 +94,28 @@ extension NotesViewController: UITableViewDelegate, UITableViewDataSource {
             if myContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
                 myContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { [weak self] success, error in
                     if success {
+                        print("Here")
                         completion(true)
                     } else {
                         guard let evaluateErrorString = error?.localizedDescription else { return }
-                        self?.showAlert(with: evaluateErrorString)
-                        completion(false)
+                        DispatchQueue.main.async {
+                            
+                            self?.showAlert(with: evaluateErrorString)
+                            completion(false)
+                        }
+
                     }
                 }
             } else {
                 guard let authErrorString = authError?.localizedDescription else { return }
-                showAlert(with: authErrorString)
-                completion(false)
+                DispatchQueue.main.async {
+                    self.showAlert(with: authErrorString)
+                    completion(false)
+                }
+                
             }
         } else {
             completion(false)
         }
     }
-    
 }
