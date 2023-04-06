@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import LocalAuthentication
 private let reuseIdentifier = "NoteCell"
 
 class NotesViewController: UIViewController {
@@ -22,6 +22,12 @@ class NotesViewController: UIViewController {
         configureTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureTableView()
+        tableView.reloadData()
+    }
+    
     //MARK: - Helpers
     
     func configureTableView() {
@@ -30,11 +36,25 @@ class NotesViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configureTableView()
-        tableView.reloadData()
+    func showAlert(with message: String) {
+        let alert = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel)
+        alert.addAction(action)
+        present(alert, animated: true)
     }
+    
+    func pushNote(indexPath: IndexPath) {
+        guard let noteVC = storyboard?.instantiateViewController(withIdentifier: "NoteVC") as? NoteViewController else { return }
+        
+        let note = notesArray[indexPath.row]
+        noteVC.lockStatus = note.lockStatus
+        noteVC.message = note.message
+        noteVC.index = indexPath.row
+        
+        navigationController?.pushViewController(noteVC, animated: true)
+    }
+    
+    
 }
 
 //MARK: - UITableViewDelegate & UITableViewDataSource
@@ -52,13 +72,41 @@ extension NotesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let noteVC = storyboard?.instantiateViewController(withIdentifier: "NoteVC") as? NoteViewController else { return }
-        
-        let note = notesArray[indexPath.row]
-        noteVC.lockStatus = note.lockStatus
-        noteVC.message = note.message
-        noteVC.index = indexPath.row
-        
-        navigationController?.pushViewController(noteVC, animated: true)
+        if notesArray[indexPath.row].lockStatus == .locked {
+            authBiometrics { [weak self] authenticated in
+                notesArray[indexPath.row].lockStatus = .unlocked
+                DispatchQueue.main.async {
+                    self?.pushNote(indexPath: indexPath)
+                }
+            }
+        }
     }
+    
+    //MARK: - TocuhId
+    func authBiometrics(completion: @escaping(Bool) -> ()) {
+        let myContext = LAContext()
+        let reason = "Our app uses Tocuh/Face ID to secure your data"
+        var authError: NSError?
+        
+        if #available(iOS 8.0, *) {
+            if myContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
+                myContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { [weak self] success, error in
+                    if success {
+                        completion(true)
+                    } else {
+                        guard let evaluateErrorString = error?.localizedDescription else { return }
+                        self?.showAlert(with: evaluateErrorString)
+                        completion(false)
+                    }
+                }
+            } else {
+                guard let authErrorString = authError?.localizedDescription else { return }
+                showAlert(with: authErrorString)
+                completion(false)
+            }
+        } else {
+            completion(false)
+        }
+    }
+    
 }
