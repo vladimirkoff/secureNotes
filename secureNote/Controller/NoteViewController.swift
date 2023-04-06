@@ -48,11 +48,22 @@ class NoteViewController: UIViewController {
         guard let index = index else { return }
         guard let noteList = noteList else { return }
         
-        let lockedStatus = lockStatus == "locked" ? "locked" : "unlocked"
+        let lockedStatus = lockStatus == "locked" ? "unlocked"  : "locked"
         
         noteList[index].setValue(lockedStatus, forKey: "lockStatus")
+        saveItems()
         
         navigationController?.popViewController(animated: true)
     }
     
+}
+
+extension NoteViewController {
+    func saveItems() {
+        do {
+            try context.save()
+        } catch {
+            print("ERROR saving items")
+        }
+    }
 }

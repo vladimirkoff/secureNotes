@@ -36,7 +36,7 @@ class NotesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadItems{ notes in
+        loadItems { notes in
             self.noteList = notes
         }
         configureTableView()
@@ -171,7 +171,7 @@ extension NotesViewController {
     func loadItems(completion: @escaping([Note]) -> ()) {
         let request : NSFetchRequest<Note> = Note.fetchRequest()
         do {
-            var noteList = try context.fetch(request)
+            let noteList = try context.fetch(request)
             completion(noteList)
         } catch {
             print("ERROR loading items")
