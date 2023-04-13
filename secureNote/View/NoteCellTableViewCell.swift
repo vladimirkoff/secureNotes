@@ -16,12 +16,11 @@ class NoteCell: UITableViewCell {
     //MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     
     //MARK: - Helpers
@@ -33,5 +32,4 @@ class NoteCell: UITableViewCell {
         noteLabel.text = message
         lockImage.image = lockStatus == .unlocked ? UIImage(systemName: "lock.open.fill") : UIImage(systemName: "lock")
     }
-    
 }

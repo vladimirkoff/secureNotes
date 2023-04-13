@@ -16,7 +16,6 @@
 		85C0F59029DF05E90005F40E /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0F58F29DF05E90005F40E /* NoteViewController.swift */; };
 		85C0F59229DF05EF0005F40E /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0F59129DF05EF0005F40E /* NoteModel.swift */; };
 		85C0F59429DF05F80005F40E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0F59329DF05F80005F40E /* Enums.swift */; };
-		85C0F59629DF06C10005F40E /* NoteObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0F59529DF06C10005F40E /* NoteObjects.swift */; };
 		85C0F59929DF07820005F40E /* NoteCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0F59729DF07820005F40E /* NoteCellTableViewCell.swift */; };
 		85C0F59A29DF07820005F40E /* NoteCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85C0F59829DF07820005F40E /* NoteCellTableViewCell.xib */; };
 		85C0F59C29DF129D0005F40E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0F59B29DF129D0005F40E /* Helpers.swift */; };
@@ -35,7 +34,6 @@
 		85C0F58F29DF05E90005F40E /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		85C0F59129DF05EF0005F40E /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
 		85C0F59329DF05F80005F40E /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		85C0F59529DF06C10005F40E /* NoteObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteObjects.swift; sourceTree = "<group>"; };
 		85C0F59729DF07820005F40E /* NoteCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCellTableViewCell.swift; sourceTree = "<group>"; };
 		85C0F59829DF07820005F40E /* NoteCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteCellTableViewCell.xib; sourceTree = "<group>"; };
 		85C0F59B29DF129D0005F40E /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -72,13 +70,12 @@
 		85C0F57429DF011E0005F40E /* secureNote */ = {
 			isa = PBXGroup;
 			children = (
+				85D2E52E29E7DE480042A6CE /* SupportingFiles */,
 				85C0F5C029DF1B5F0005F40E /* Data */,
 				85C0F58C29DF03C00005F40E /* Utilities */,
 				85C0F58B29DF03B80005F40E /* Model */,
 				85C0F58A29DF03B30005F40E /* View */,
 				85C0F58929DF03AE0005F40E /* Controller */,
-				85C0F57529DF011E0005F40E /* AppDelegate.swift */,
-				85C0F57729DF011E0005F40E /* SceneDelegate.swift */,
 				85C0F57B29DF011E0005F40E /* Main.storyboard */,
 				85C0F57E29DF011F0005F40E /* Assets.xcassets */,
 				85C0F58029DF011F0005F40E /* LaunchScreen.storyboard */,
@@ -117,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				85C0F59329DF05F80005F40E /* Enums.swift */,
-				85C0F59529DF06C10005F40E /* NoteObjects.swift */,
 				85C0F59B29DF129D0005F40E /* Helpers.swift */,
 			);
 			path = Utilities;
@@ -129,6 +125,15 @@
 				85C0F5C129DF1B750005F40E /* NotesData.xcdatamodeld */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		85D2E52E29E7DE480042A6CE /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				85C0F57729DF011E0005F40E /* SceneDelegate.swift */,
+				85C0F57529DF011E0005F40E /* AppDelegate.swift */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,7 +213,6 @@
 				85C0F57629DF011E0005F40E /* AppDelegate.swift in Sources */,
 				85C0F5C429DF246D0005F40E /* NotesData.xcdatamodeld in Sources */,
 				85C0F58E29DF04350005F40E /* NotesListViewController.swift in Sources */,
-				85C0F59629DF06C10005F40E /* NoteObjects.swift in Sources */,
 				85C0F59429DF05F80005F40E /* Enums.swift in Sources */,
 				85C0F57829DF011E0005F40E /* SceneDelegate.swift in Sources */,
 				85C0F59C29DF129D0005F40E /* Helpers.swift in Sources */,

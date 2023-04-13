@@ -18,12 +18,8 @@ class NotesViewController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     private var noteList: [Note]? {
-        didSet {
-            tableView.reloadData()
-        }
+        didSet { tableView.reloadData() }
     }
-
-    
     
     //MARK: - Lifecycle
     
@@ -101,8 +97,6 @@ class NotesViewController: UIViewController {
         
         navigationController?.pushViewController(noteVC, animated: true)
     }
-    
-    
 }
 
 //MARK: - UITableViewDelegate & UITableViewDataSource
@@ -120,7 +114,7 @@ extension NotesViewController: UITableViewDelegate, UITableViewDataSource {
             let note = NoteModel(message: message, lockStatus: lockStatus)
             cell.configure(note: note)
         }
-
+        
         return cell
     }
     
@@ -138,7 +132,7 @@ extension NotesViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    //MARK: - TocuhId
+    //MARK: - Biometric access
     func authBiometrics(completion: @escaping(Bool) -> ()) {
         let myContext = LAContext()
         let reason = "Our app uses Tocuh/Face ID to secure your data"
@@ -152,11 +146,9 @@ extension NotesViewController: UITableViewDelegate, UITableViewDataSource {
                     } else {
                         guard let evaluateErrorString = error?.localizedDescription else { return }
                         DispatchQueue.main.async {
-                            
                             self?.showAlert(with: evaluateErrorString)
                             completion(false)
                         }
-
                     }
                 }
             } else {
