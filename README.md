@@ -12,12 +12,15 @@
 1. Clone this repository
 
 ```bash
-git clone https://github.com/vladimirkoff/iWeather-IOS.git
+git clone https://github.com/vladimirkoff/secureNotes.git
 ```
 
 
 
-2. Open iWeather.xcworkspace in Xcode
+
+
+
+2. Open secureNote.xcworkspace in Xcode
 
 3. Select some iOS/iPadOS device and hit run button in Xcode
 
@@ -25,16 +28,16 @@ git clone https://github.com/vladimirkoff/iWeather-IOS.git
 
 ###  Usage
 
-###  Light and Dark modes!
+###  See your saved notes or create one
 
-| Dark  | Light |
+| Create a note  | Check your notes |
 | ------------- | ------------- | 
-|![Simulator Screen Shot - iPhone 14 Pro - 2023-04-11 at 18 58 12](https://user-images.githubusercontent.com/115025494/231221194-17fadc5c-405c-4d21-b4ac-3c3ae0f0f2aa.png) |![Simulator Screen Shot - iPhone 14 Pro - 2023-04-11 at 18 58 13](https://user-images.githubusercontent.com/115025494/231221264-12862030-65a1-4228-8e73-12d936e2bf68.png)| 
+|![Simulator Screen Shot - iPhone 14 Pro - 2023-04-13 at 11 24 59](https://user-images.githubusercontent.com/115025494/231700338-24a573d7-b11f-434e-9d15-755f41105d73.png) |![Simulator Screen Shot - iPhone 14 Pro - 2023-04-13 at 09 51 49](https://user-images.githubusercontent.com/115025494/231700401-00603cdf-8a3a-445c-9ed0-1ec39e934b24.png)| 
 
-###  Check weather
+###  Lock or unlock your note
 
-| For specific city | For your location |
+| Lock or Unlock | 
 | ------------- | ------------- |
-|![Simulator Screen Shot - iPhone 14 Pro - 2023-04-11 at 18 58 26](https://user-images.githubusercontent.com/115025494/231221002-0c2e7447-1a7b-4302-8a94-f781cc8a04f9.png)| ![Simulator Screen Shot - iPhone 14 Pro - 2023-04-11 at 18 58 34](https://user-images.githubusercontent.com/115025494/231220868-05cd5147-b30e-4ac8-b0fe-c4b6dd25f599.png)| 
+|![Simulator Screen Shot - iPhone 14 Pro - 2023-04-13 at 09 52 01](https://user-images.githubusercontent.com/115025494/231700580-d54b04f6-c6e7-4423-8e08-cd995282956c.png)| 
 
 
