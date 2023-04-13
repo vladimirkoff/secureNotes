@@ -37,7 +37,7 @@ git clone https://github.com/vladimirkoff/secureNotes.git
 ###  Lock or unlock your note
 
 | Lock or Unlock | 
-| ------------- | ------------- |
+| ------------- | 
 |![Simulator Screen Shot - iPhone 14 Pro - 2023-04-13 at 09 52 01](https://user-images.githubusercontent.com/115025494/231700580-d54b04f6-c6e7-4423-8e08-cd995282956c.png)| 
 
 
